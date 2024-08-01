@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"sample/models"
 
 	"github.com/gofiber/fiber/v2"
@@ -45,7 +44,6 @@ func (d DataBase) InsertValue(c *fiber.Ctx) error {
 
 	createRecord.Decode(employee)
 
-	fmt.Println("EMpId", employee.Id)
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"data":    employee,
 		"message": "Employee document inserted successfully",
@@ -131,8 +129,6 @@ func (d DataBase) UpdateById(c *fiber.Ctx) error {
 			"error":   err.Error(),
 		})
 	}
-
-	fmt.Println("Updated----", updatedEmp)
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data":    updatedEmp,

@@ -16,15 +16,15 @@ func SetupRouter(client *mongo.Client, collection *mongo.Collection) {
 		Collection: collection,
 	}
 
-	app.Post("/insert", h.InsertValue)
-	app.Get("/get", h.GetValue)
-	app.Put("/update/:id", h.UpdateById)
-	app.Delete("/deleteDoc/:id", h.DeleteById)
+	app.Post("/create", h.InsertValue)
+	app.Get("/getemployee", h.GetValue)
+	app.Put("/update-employees/:id", h.UpdateById)
+	app.Delete("/delete-employees/:id", h.DeleteById)
 
 	if err := app.Listen(":8080"); err != nil {
 		fmt.Println("Connection Failed:", err.Error())
 		return
 	}
-	
+
 	fmt.Println("Server Connected !!!!!...")
 }
